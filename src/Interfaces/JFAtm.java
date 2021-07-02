@@ -5,6 +5,10 @@
  */
 package Interfaces;
 
+import Fuentes.Atm;
+import Fuentes.Cuenta;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danie
@@ -14,8 +18,14 @@ public class JFAtm extends javax.swing.JFrame {
     /**
      * Creates new form JFAtm
      */
+    
+    Cuenta cuenta;
+    Atm atm;
     public JFAtm() {
         initComponents();
+        cuenta = new Cuenta();
+        this.setLocationRelativeTo(null);
+        this.jTAAtm.setText("Bienvenido" + "\npor favor seleccione " + "\nel botón con la acción" + "\nque desea realizar!");
     }
 
     /**
@@ -57,8 +67,15 @@ public class JFAtm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
 
         jTAAtm.setColumns(20);
+        jTAAtm.setFont(new java.awt.Font("Microsoft Himalaya", 0, 48)); // NOI18N
         jTAAtm.setRows(5);
         jScrollPane1.setViewportView(jTAAtm);
+
+        jBRetirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRetirarActionPerformed(evt);
+            }
+        });
 
         jLabel2.setBackground(new java.awt.Color(102, 255, 102));
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -232,6 +249,19 @@ public class JFAtm extends javax.swing.JFrame {
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jBRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRetirarActionPerformed
+        
+        String respuesta = JOptionPane.showInputDialog(null, "Escribe el monto que deseas retirar");
+        double monto = Double.parseDouble(respuesta);
+        atm = new Atm(monto);
+        
+        if(cuenta.validarRetiro(monto)){
+            JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        }else{
+            JOptionPane.showMessageDialog(null, "Operación fallida");
+        }
+    }//GEN-LAST:event_jBRetirarActionPerformed
 
     /**
      * @param args the command line arguments

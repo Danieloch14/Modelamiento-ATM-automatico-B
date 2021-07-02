@@ -17,17 +17,15 @@ public class Atm {
     public Atm() {
     }
 
-    public Atm(Cuenta cuenta, int Id, double cantidad) {
-        this.cuenta = cuenta;
-        this.Id = Id;
+    public Atm(double cantidad) {
         this.cantidad = cantidad;
     }
-    
-    public double extraerDinero(){
-        
-        this.cantidad = cuenta.saldo;
+
+    public double getCantidad() {
         return cantidad;
     }
+    
+    
     
     
     

@@ -11,20 +11,24 @@ package Fuentes;
  */
 public class Cuenta {
     int numero;
-    double saldo;
+    static double saldo;
+    Atm atm;
 
     public Cuenta() {
     }
-
-    public Cuenta(int numero, double saldo) {
-        this.numero = numero;
-        this.saldo = saldo;
+ 
+    public boolean validarRetiro(double cantidad){
+        atm = new Atm(cantidad);
+        saldo = 200.00;
+        double aux;
+        aux = atm.getCantidad();
+        if(aux > this.saldo){
+            return false;
+        }else{
+            return true;
+        }
     }
     
-    public double retirarCantidad(double cantidad){
-        return cantidad;
-        
-    }
     
     
 }
