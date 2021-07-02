@@ -9,7 +9,7 @@ package Fuentes;
  *
  * @author danie
  */
-public class MODELAMIENTO_ATMAUTOMÁTICO {
+public class Main {
 
     /**
      * @param args the command line arguments
